@@ -1,6 +1,256 @@
+:root {
+  --color-accent: oklch(32% 0.1 264);
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
   /* Set line height to 1.5 times the font size
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 10ch;
+}
+
+/* Home: headshot matches the same content width as paragraphs */
+body > img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 400%;
+}
+
+nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+nav ul,
+nav li {
+  display: contents;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 0.5em;
+  text-decoration: none;
+  color: inherit;
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+nav a.current {
+  font-weight: 650;
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+}
+
+/* Step 3: contact form layout */
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  align-items: baseline;
+}
+
+form label {
+  display: block;
+  margin: 0;
+}
+
+form input,
+form textarea,
+form button {
+  font: inherit;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  grid-column: 1 / -1;
+}
+
+/* Step 4: projects grid + subgrid alignment */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.projects article h2 {
+  margin: 0;
+}
+
+.projects article img {
+  max-width: 100%;
+  height: auto;
+  border: 4px solid var(--color-accent);
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* Resume page */
+body.resume .resume-main {
+  max-width: 100%;
+}
+
+body.resume .resume-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+body.resume .resume-header h1 {
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4rem;
+}
+
+body.resume .resume-contact,
+body.resume .resume-links {
+  margin: 0.35em 0 0;
+  color: oklch(38% 0.03 264);
+  font-size: 0.95rem;
+}
+
+body.resume .resume-header a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+body.resume .resume-header a:hover {
+  text-decoration: underline;
+}
+
+body.resume .resume-section {
+  margin-top: 2.25rem;
+}
+
+body.resume .resume-section:first-of-type {
+  margin-top: 0;
+}
+
+body.resume .resume-section h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: oklch(32% 0.08 264);
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+body.resume .resume-entry {
+  margin: 0;
+}
+
+body.resume .resume-entry + .resume-entry {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid oklch(88% 2% 220);
+}
+
+body.resume .resume-entry--compact + .resume-entry--compact {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+body.resume .resume-entry h3 {
+  font-size: 1.08rem;
+  font-weight: 650;
+  margin: 0 0 0.2em;
+  color: oklch(22% 0.04 264);
+}
+
+body.resume .resume-role {
+  margin: 0;
+  font-weight: 500;
+  color: oklch(32% 0.03 264);
+}
+
+body.resume .resume-meta {
+  margin: 0.15em 0 0;
+  font-size: 0.9rem;
+  color: oklch(45% 0.02 260);
+  font-variant-numeric: tabular-nums;
+}
+
+body.resume .resume-meta a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+body.resume .resume-meta a:hover {
+  text-decoration: underline;
+}
+
+body.resume .resume-entry h4 {
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1rem 0 0.5rem;
+  color: oklch(38% 0.04 264);
+}
+
+body.resume .resume-entry ul,
+body.resume .resume-skills {
+  margin: 0.65rem 0 0;
+  padding-left: 1.2rem;
+}
+
+body.resume .resume-entry li,
+body.resume .resume-skills li {
+  margin: 0.35em 0;
+  padding-left: 0.15em;
+}
+
+body.resume .resume-entry li::marker,
+body.resume .resume-skills li::marker {
+  color: var(--color-accent);
+}
+
+body.resume .resume-entry--compact h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.35em;
+}
+
+body.resume .resume-entry--compact p {
+  margin: 0;
+  color: oklch(38% 0.02 260);
 }
