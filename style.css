@@ -155,6 +155,10 @@ body.resume .resume-header a:hover {
   text-decoration: underline;
 }
 
+body.resume .resume-links a {
+  overflow-wrap: anywhere;
+}
+
 body.resume .resume-section {
   margin-top: 2.25rem;
 }
@@ -213,10 +217,30 @@ body.resume .resume-meta a {
   color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 body.resume .resume-meta a:hover {
   text-decoration: underline;
+}
+
+body.resume .resume-skills-inline {
+  margin: 0.35em 0 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: oklch(32% 0.04 264);
+}
+
+body.resume .resume-coursework {
+  margin: 0.5rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: oklch(38% 0.02 260);
+}
+
+body.resume .resume-skills--detailed strong {
+  font-weight: 650;
+  color: oklch(28% 0.04 264);
 }
 
 body.resume .resume-entry h4 {
