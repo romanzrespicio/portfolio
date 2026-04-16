@@ -1,9 +1,37 @@
 :root {
+  color-scheme: light dark;
   --color-accent: oklch(32% 0.1 264);
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
   accent-color: var(--color-accent);
+}
+
+label.color-scheme {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  left: auto;
+  z-index: 1000;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.55em;
+  font-size: 80%;
+  color: canvastext;
+  background-color: canvas;
+  border: 1px solid var(--border-color);
+  border-radius: 0.35em;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+}
+
+label.color-scheme select {
+  font: inherit;
+  color: inherit;
+  max-width: 12rem;
 }
 
 body {
@@ -42,7 +70,7 @@ nav {
   display: flex;
   gap: 0.75rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav ul,
@@ -58,16 +86,20 @@ nav a {
   color: inherit;
 }
 
-nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  padding-bottom: 0.1em;
-  background-color: oklch(from var(--color-accent) 95% 5% h);
-}
-
 nav a.current {
   font-weight: 650;
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
+}
+
+/* After .current so hover wins; canvas tracks scheme (Automatic / Light / Dark) */
+nav a:hover,
+nav a:focus-visible,
+nav a.current:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  color: canvastext;
 }
 
 /* Step 3: contact form layout */
@@ -129,7 +161,7 @@ body.resume .resume-main {
 body.resume .resume-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 body.resume .resume-header h1 {

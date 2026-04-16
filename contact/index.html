@@ -7,22 +7,9 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="../">Home</a></li>
-            <li><a href="../resume/">Resume</a></li>
-            <li><a href="../projects/">Projects</a></li>
-            <li><a class="current" href="./">Contact</a></li>
-            <li><a href="https://github.com/romanzrespicio" target="_blank">GitHub</a></li>
-        </ul>
-    </nav>
-
     <h1>Contact me</h1>
 
-    <form action="mailto:roman.respicio05@gmail.com" method="POST" enctype="text/plain">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email">
-
+    <form action="mailto:roman.respicio05@gmail.com" method="get">
         <label for="subject">Subject</label>
         <input id="subject" name="subject">
 
@@ -31,5 +18,6 @@
 
         <button type="submit">Send</button>
     </form>
+    <script src="../global.js" type="module"></script>
 </body>
 </html>
