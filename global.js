@@ -33,9 +33,15 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   for (const p of project) {
     const article = document.createElement('article');
 
+    const imageSrc = p.image?.startsWith('http')
+      ? p.image
+      : `${BASE_PATH}${String(p.image ?? '')
+          .replace(/^(\.\/|\.\.\/)+/g, '')
+          .replace(/^\/+/g, '')}`;
+
     article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
-      <img src="${p.image}" alt="${p.title}">
+      <img src="${imageSrc}" alt="${p.title}">
       <p>${p.description}</p>
     `;
 
