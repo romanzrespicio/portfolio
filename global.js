@@ -19,6 +19,7 @@ export async function fetchJSON(url) {
     return data;
   } catch (error) {
     console.error('Error fetching or parsing JSON data:', error);
+    throw error;
   }
 }
 
