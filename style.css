@@ -128,6 +128,216 @@ form button {
   grid-column: 1 / -1;
 }
 
+/* Projects page: pie + legend (compresses in-row, then stacks) */
+.projects-page .projects-title {
+  margin-bottom: 0.15em;
+}
+
+/* Lab Step 4: project search */
+.projects-page .searchBar {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.25rem;
+  padding: 0.6rem 0.85rem;
+  font: inherit;
+  color: canvastext;
+  background-color: canvas;
+  border: 1px solid var(--border-color);
+  border-radius: 0.45em;
+}
+
+.projects-page .searchBar::placeholder {
+  color: color-mix(in oklch, canvastext, canvas 45%);
+}
+
+.projects-page .searchBar:focus {
+  outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 35%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 40rem) {
+  body.projects-page {
+    padding-inline: max(1rem, 4vw);
+    padding-block: clamp(1.75rem, 6vw, 3.5rem);
+  }
+
+  body.projects-page h1 {
+    font-size: clamp(2.25rem, 10vw, 3.75rem);
+  }
+}
+
+/* Chart strip is the query container so `cqi` tracks available width (like the lab resize demo) */
+.projects-page .container {
+  container-type: inline-size;
+  container-name: chart-legend;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2.5cqi, 2rem);
+  margin-block: clamp(0.85rem, 2.5cqi, 2rem);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Row: pie shrinks with strip width; legend flexes and tightens its grid */
+.projects-page #projects-plot,
+.projects-page #projects-pie-plot {
+  display: block;
+  width: clamp(8.75rem, 36cqi, 18rem);
+  max-width: min(18rem, 46%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  overflow: visible;
+  flex: 0 1 auto;
+  min-width: 0;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 8%));
+}
+
+/* Lab Step 5.1: wedge hover (only dim when a slice is hovered, not empty SVG space) */
+.projects-page #projects-plot:has(path:hover) path:not(:hover),
+.projects-page #projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+.projects-page #projects-plot path,
+.projects-page #projects-pie-plot path {
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    fill 0.25s ease;
+}
+
+/* Lab Step 5.2: selected wedge + legend */
+.projects-page #projects-plot path.selected,
+.projects-page #projects-pie-plot path.selected {
+  --color: oklch(60% 45% 0) !important;
+  fill: var(--color);
+}
+
+.projects-page .legend .legend-item.selected {
+  font-weight: 650;
+  background-color: color-mix(in oklch, oklch(60% 45% 0), canvas 88%);
+  border-radius: 0.25em;
+}
+
+.projects-page .legend .legend-item.selected .swatch {
+  background-color: oklch(60% 45% 0) !important;
+}
+
+/* Legend panel */
+.projects-page .container .legend {
+  list-style: none;
+  margin: 0;
+  padding: clamp(0.55rem, 1.8cqi, 1rem) clamp(0.6rem, 2cqi, 1.2rem);
+  border: 1px solid color-mix(in oklch, var(--border-color), transparent 15%);
+  border-radius: 0.5rem;
+  background-color: color-mix(in oklch, canvas, canvastext 2.5%);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 5%),
+    0 4px 14px rgb(0 0 0 / 4%);
+  display: grid;
+  row-gap: 0.45em;
+  column-gap: clamp(0.45rem, 1.8cqi, 0.85rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(6.75em, 100%), 1fr));
+  font: inherit;
+  font-size: clamp(0.75rem, 0.9cqi + 0.68rem, 0.9rem);
+  line-height: 1.3;
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 100%;
+  align-content: start;
+}
+
+@container chart-legend (max-width: 26rem) {
+  .projects-page .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(0.75rem, 3cqi, 1.25rem);
+  }
+
+  .projects-page #projects-plot,
+  .projects-page #projects-pie-plot {
+    width: min(16rem, 88cqi);
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .projects-page .container .legend {
+    flex: none;
+    width: 100%;
+    max-width: min(22rem, 100%);
+    margin-inline: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.projects-page .legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.projects-page .legend .swatch {
+  display: inline-block;
+  flex: none;
+  width: 0.72em;
+  height: 0.72em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--color, canvastext);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklch, canvastext, transparent 72%),
+    0 0 0 1px color-mix(in oklch, canvas, transparent 40%);
+}
+
+.projects-page .legend em {
+  font-family: inherit;
+  font-style: italic;
+  font-variant-numeric: lining-nums;
+  font-weight: 500;
+  color: color-mix(in oklch, canvastext, canvas 38%);
+}
+
+/* Fallback when container queries are unsupported */
+@supports not (container-type: inline-size) {
+  @media (max-width: 26rem) {
+    .projects-page .container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .projects-page #projects-plot,
+    .projects-page #projects-pie-plot {
+      width: min(16rem, 92vw);
+      max-width: 100%;
+      align-self: center;
+    }
+
+    .projects-page .container .legend {
+      width: min(100%, 22rem);
+      max-width: 100%;
+      flex: none;
+      margin-inline: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 26.01rem) {
+    .projects-page #projects-plot,
+    .projects-page #projects-pie-plot {
+      width: clamp(8.75rem, 34vw, 18rem);
+      max-width: 46%;
+    }
+  }
+}
+
 /* Step 4: projects grid + subgrid alignment */
 .projects {
   display: grid;
@@ -151,6 +361,43 @@ form button {
   border: 4px solid var(--color-accent);
   border-radius: 0;
   box-sizing: border-box;
+}
+
+.projects article .project-body {
+  min-width: 0;
+}
+
+.projects article .project-body > p:first-of-type {
+  margin: 0;
+}
+
+.projects article .project-year {
+  margin: 0.65rem 0 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.06em;
+  color: oklch(42% 0.03 264);
+}
+
+.projects article .project-year__label {
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: oklch(48% 0.02 264);
+}
+
+.projects article .project-year__num {
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 /* Step 3: GitHub stats layout (4-column, not stacked) */

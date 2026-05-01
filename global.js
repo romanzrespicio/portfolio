@@ -39,10 +39,18 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
           .replace(/^(\.\/|\.\.\/)+/g, '')
           .replace(/^\/+/g, '')}`;
 
+    const yearLine =
+      p.year != null && p.year !== ''
+        ? `<p class="project-year"><span class="project-year__label">c.</span> <span class="project-year__num">${p.year}</span></p>`
+        : '';
+
     article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
       <img src="${imageSrc}" alt="${p.title}">
-      <p>${p.description}</p>
+      <div class="project-body">
+        <p>${p.description}</p>
+        ${yearLine}
+      </div>
     `;
 
     containerElement.appendChild(article);

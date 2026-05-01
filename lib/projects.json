@@ -1,7 +1,7 @@
 [
   {
     "title": "League of Legends: Gold Statistical Analysis",
-    "year": 2024,
+    "year": 2025,
     "image": "../images/lol-gold-analysis-hero.png",
     "description": "\n                DSC80 project using Oracle’s Elixir professional match data to study how total gold relates to damage, farm, and other outcomes. I built an end-to-end pipeline with cleaning, feature engineering, and EDA; used hypothesis tests and permutation analyses (including missingness on goldat25); and trained classification models with cross-validation, improving a baseline decision tree with a Random Forest and engineered jungle-focused features—then shared results on\n                GitHub Pages\n                and in the\n                GitHub repository.\n            "
   },
@@ -13,67 +13,67 @@
   },
   {
     "title": "Consectetur adipiscing elit.",
-    "year": 2022,
+    "year": 2026,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Filler card—replace with a real project when ready."
   },
   {
     "title": "Ut enim ad minim.",
-    "year": 2021,
+    "year": 2024,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Placeholder content for the projects grid."
   },
   {
     "title": "Duis aute irure dolor.",
-    "year": 2020,
+    "year": 2023,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
   },
   {
     "title": "Excepteur sint occaecat.",
-    "year": 2019,
+    "year": 2026,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "title": "Integer posuere erat ante.",
-    "year": 2018,
+    "year": 2025,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Placeholder project card."
   },
   {
     "title": "Curabitur non nulla sit.",
-    "year": 2017,
+    "year": 2024,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Filler text for layout demonstration."
   },
   {
     "title": "Pellentesque in ipsum id.",
-    "year": 2016,
+    "year": 2023,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
   },
   {
     "title": "Nulla quis lorem ut.",
-    "year": 2015,
+    "year": 2026,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Nulla quis lorem ut libero malesuada feugiat. Curabitur aliquet quam id dui posuere blandit."
   },
   {
     "title": "Quisque velit nisi pretium.",
-    "year": 2014,
+    "year": 2024,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Quisque velit nisi, pretium ut lacinia in, elementum id enim. Placeholder until another project is published here."
   },
   {
     "title": "Donec rutrum congue leo.",
-    "year": 2013,
+    "year": 2025,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Filler card matching the tutorial grid pattern."
   },
   {
     "title": "Vivamus suscipit tortor eget.",
-    "year": 2012,
+    "year": 2023,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Vivamus suscipit tortor eget felis porttitor volutpat. Last placeholder—swap out for your next portfolio piece."
   }
