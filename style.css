@@ -583,3 +583,144 @@ body.resume .resume-entry--compact p {
   margin: 0;
   color: oklch(38% 0.02 260);
 }
+
+/* Meta page: summary stats */
+dl.stats {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(6.5rem, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+  margin-block: 2rem;
+  padding: 1.25rem 0;
+  border-block: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+
+dl.stats dt {
+  grid-row: 1;
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: oklch(42% 0.02 260);
+}
+
+dl.stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+dl.stats abbr {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border-color);
+  cursor: help;
+}
+
+/* Meta: commits scatter chart */
+#chart {
+  width: 100%;
+  max-width: 100%;
+  margin-block: 0.5rem 2rem;
+}
+
+#chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gridlines line {
+  stroke: oklch(45% 0.02 260 / 22%);
+  stroke-width: 1;
+}
+
+.gridlines path.domain {
+  display: none;
+}
+
+#chart circle {
+  cursor: pointer;
+  transition: transform 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#chart circle:hover {
+  transform: scale(1.5);
+}
+
+#chart circle.selected {
+  fill: #ff6b6b !important;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+#chart .selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+#selection-count {
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 600;
+}
+
+#language-breakdown {
+  margin: 0 0 2rem;
+}
+
+/* Meta: commit tooltip */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  align-items: baseline;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info dt {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: oklch(44% 0.02 260);
+}
+
+dl.info dd {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+dl.info.tooltip {
+  position: fixed;
+  z-index: 1100;
+  max-width: min(22rem, calc(100vw - 2rem));
+  padding: 0.75rem 1rem;
+  background-color: color-mix(in oklch, canvas 88%, white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.45em;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 12%);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}

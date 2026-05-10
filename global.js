@@ -67,6 +67,7 @@ const pages = [
   { url: 'resume/', title: 'Resume' },
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
+  { url: 'meta/', title: 'Meta' },
   { url: 'https://github.com/romanzrespicio', title: 'GitHub' },
 ];
 
